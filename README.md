@@ -1,4 +1,4 @@
-# Baby Name Reveal Game
+# Baby Name Reveal Game (Wordle Style)
 
 **[View Repository](https://github.com/yinanzhou/baby-name-reveal-game)** | **[Live Deployment](https://baby-name-reveal.yyzz.dev/)**
 
