@@ -1,6 +1,6 @@
 # Baby Name Reveal Game
 
-**[View Repository](https://github.com/yinanzhou/baby-name-reveal-game)**
+**[View Repository](https://github.com/yinanzhou/baby-name-reveal-game)** | **[Live Deployment](https://baby-name-reveal.yyzz.dev/)**
 
 With the Baby Name Reveal Game, you can host an interactive name-guessing game at your baby shower. It helps you reveal your baby's name in a fun, Wordle-like style!
 
