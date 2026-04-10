@@ -28,9 +28,25 @@ Program](https://bughunters.google.com/open-source-security).
 
 This project is designed for zero-dependency deployment and ease of use.
 
-*   **File Structure**: HTML, CSS, and JavaScript are separated into `index.html`, `style.css`, and `script.js` for better maintainability and security.
-*   **State Management**: Game state and configuration are managed in-memory via a simple JavaScript object in `script.js`.
-*   **Styling**: Uses CSS variables in `style.css` for theming and responsive design.
+*   **File Structure**: Public files are located in the `public` directory. HTML, CSS, and JavaScript are separated into `index.html`, `style.css`, and `script.js`.
+*   **State Management**: Game state and configuration are managed in-memory via a simple JavaScript object in `public/script.js`.
+*   **Styling**: Uses CSS variables in `public/style.css` for theming and responsive design.
+
+## Directory Structure
+
+```text
+.
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+└── public/
+    ├── 404.html
+    ├── _headers
+    ├── googleaecfe13af0aa87b8.html
+    ├── index.html
+    ├── script.js
+    └── style.css
+```
 
 ## Prerequisites
 
@@ -48,9 +64,9 @@ Since this is a client-side application built with pure HTML, CSS, and JavaScrip
     git clone https://github.com/yinanzhou/baby-name-reveal-game.git
     cd baby-name-reveal-game
     ```
-2.  Open `index.html` directly in your browser, or use a local development server for a better experience:
-    *   **Using Python**: `python3 -m http.server 8000`
-    *   **Using Node.js**: `npx serve` or `npx live-server`
+2.  Open `public/index.html` directly in your browser, or use a local development server for a better experience:
+    *   **Using Python**: `cd public && python3 -m http.server 8000`
+    *   **Using Node.js**: `npx serve public`
 
 Open your browser and navigate to the address provided by the server (usually `http://localhost:8000`).
 
@@ -70,7 +86,7 @@ Open your browser and navigate to the address provided by the server (usually `h
 
 ### Code Configuration
 
-You can pre-configure the game by editing the `config` object at the top of `script.js`:
+You can pre-configure the game by editing the `config` object at the top of `public/script.js`:
 
 ```javascript
 let config = {
