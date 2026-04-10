@@ -31,7 +31,18 @@ This project is designed for zero-dependency deployment and ease of use.
 
 *   **File Structure**: Public files are located in the `public` directory. HTML, CSS, and JavaScript are separated into `index.html`, `style.css`, and `script.js`.
 *   **State Management**: Game state and configuration are managed in-memory via a simple JavaScript object in `public/script.js`.
-*   **Styling**: Uses CSS variables in `public/style.css` for theming and responsive design.
+*   **Styling**: Uses CSS variables in `public/style.css` for theming.
+
+### Security & CSP
+
+This application enforces a strict Content Security Policy (CSP) to ensure security and privacy. The policy is defined in `public/_headers` (supported by platforms like Netlify).
+
+*   **No Inline Scripts/Styles**: The CSP forbids unsafe inline scripts and styles. All JavaScript is in `script.js` and all CSS in `style.css`.
+*   **Zero External Requests**: The application does not load any external resources. Everything is self-contained.
+
+### Mobile Experience
+
+To maintain the game board layout without complex media queries, the application forces a desktop-like experience on mobile devices. This is achieved by setting the viewport width to `1280` in `index.html`. Mobile browsers will render the page as if it were on a desktop and scale it down to fit the screen.
 
 ## Directory Structure
 
@@ -43,7 +54,6 @@ This project is designed for zero-dependency deployment and ease of use.
 └── public/
     ├── 404.html
     ├── _headers
-    ├── googleaecfe13af0aa87b8.html
     ├── index.html
     ├── script.js
     └── style.css
