@@ -325,6 +325,18 @@ button:hover {
   font-weight: bold;
 }
 
+.config-grid label.checkbox-label {
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.config-grid label.checkbox-label input {
+  margin: 0;
+  cursor: pointer;
+}
+
 .config-grid input,
 .config-grid select {
   padding: 5px;

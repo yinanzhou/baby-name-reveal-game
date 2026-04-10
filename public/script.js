@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+const STORAGE_KEY = "babyNameRevealSettings";
+
 // Configuration State
 let config = {
   title: "John & Ana's Baby Shower",
@@ -81,6 +83,8 @@ function applyConfig() {
     initialTilesLabel.style.display = "block";
     palette.style.display = "flex";
   }
+
+  saveSettings();
 }
 
 function syncBoardLengthToAnswer() {
@@ -400,6 +404,7 @@ function setupEventListeners() {
   document.getElementById("cfg-answer").addEventListener("input", applyConfig);
   document.getElementById("cfg-initial-tiles").addEventListener("input", applyConfig);
   document.getElementById("cfg-max-snapshots").addEventListener("input", applyConfig);
+  document.getElementById("cfg-remember").addEventListener("change", applyConfig);
 
   // Buttons
   document.getElementById("toggle-config-btn").addEventListener("click", applyAndClose);
@@ -419,9 +424,79 @@ function setupEventListeners() {
   document.getElementById("btn-fullscreen").addEventListener("click", toggleFullScreen);
 }
 
+function validateSettings(settings) {
+  if (!settings || typeof settings !== "object") return false;
+  if (typeof settings.title !== "string") return false;
+  if (!["boy", "girl", "neutral"].includes(settings.themeStyle)) return false;
+  if (typeof settings.suffix !== "string") return false;
+  if (!["auto", "manual"].includes(settings.mode)) return false;
+  if (typeof settings.answer !== "string") return false;
+  
+  const initialTiles = parseInt(settings.initialTiles);
+  if (isNaN(initialTiles) || initialTiles < 1) return false;
+  
+  const maxSnapshots = parseInt(settings.maxSnapshots);
+  if (isNaN(maxSnapshots) || maxSnapshots < 1) return false;
+  
+  return true;
+}
+
+function saveSettings() {
+  const remember = document.getElementById("cfg-remember").checked;
+
+  if (remember) {
+    const settings = {
+      title: document.getElementById("cfg-title").value,
+      themeStyle: document.getElementById("cfg-theme-style").value,
+      suffix: document.getElementById("cfg-suffix").value,
+      mode: document.getElementById("cfg-mode").value,
+      answer: document.getElementById("cfg-answer").value,
+      initialTiles: document.getElementById("cfg-initial-tiles").value,
+      maxSnapshots: document.getElementById("cfg-max-snapshots").value
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
+  } else {
+    localStorage.removeItem(STORAGE_KEY);
+  }
+}
+
+function loadSettings() {
+  const stored = localStorage.getItem(STORAGE_KEY);
+  if (!stored) return;
+
+  // Clean up old key if it exists
+  localStorage.removeItem("babyNameRevealRemember");
+
+  try {
+    const parsed = JSON.parse(stored);
+    if (validateSettings(parsed)) {
+      document.getElementById("cfg-title").value = parsed.title;
+      document.getElementById("cfg-theme-style").value = parsed.themeStyle;
+      document.getElementById("cfg-suffix").value = parsed.suffix;
+      document.getElementById("cfg-mode").value = parsed.mode;
+      document.getElementById("cfg-answer").value = parsed.answer;
+      document.getElementById("cfg-initial-tiles").value = parsed.initialTiles;
+      document.getElementById("cfg-max-snapshots").value = parsed.maxSnapshots;
+      
+      document.getElementById("cfg-remember").checked = true;
+      
+      // Hide config menu if valid config loaded
+      document.getElementById("config-menu").style.display = "none";
+      document.getElementById("backdrop").style.display = "none";
+    } else {
+      console.warn("Invalid settings found in local storage, clearing.");
+      localStorage.removeItem(STORAGE_KEY);
+    }
+  } catch (e) {
+    console.error("Error parsing settings from local storage:", e);
+    localStorage.removeItem(STORAGE_KEY);
+  }
+}
+
 // Initialize Game
 function init() {
   setupEventListeners();
+  loadSettings();
   applyConfig();
   resetBoard();
 }

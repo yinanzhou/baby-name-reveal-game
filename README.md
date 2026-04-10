@@ -23,6 +23,7 @@ Program](https://bughunters.google.com/open-source-security).
 *   **Snapshots**: Keep track of previous guesses by taking snapshots.
 *   **Full Screen Support**: Great for projecting on a screen or TV during the event.
 *   **Responsive Design**: Works well on desktop and mobile devices.
+*   **Persistence**: Option to remember settings in browser local storage (opt-in).
 
 ## Technical Architecture
 
@@ -112,6 +113,14 @@ The design system is controlled via CSS variables in the `:root` selector. You c
   --color-present: #c9b458;
 }
 ```
+
+### Local Storage Persistence
+
+You can opt-in to remember your settings in the browser's local storage by checking the "Remember settings" option in the configuration menu. This ensures your settings are preserved across page reloads.
+
+*   **Privacy**: Settings are stored entirely in your browser. No data is transmitted to any server.
+*   **Opt-out**: If you uncheck the option, stored settings will be cleared.
+*   **Leak Prevention**: If a valid configuration is found in local storage on startup, the configuration menu will be hidden automatically to prevent accidentally revealing the answer to the audience.
 
 ## Technologies Used
 
