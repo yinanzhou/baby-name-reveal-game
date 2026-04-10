@@ -25,6 +25,7 @@ limitations under the License.
   <meta name="keywords" content="baby shower game, baby name reveal, name guessing game, Wordle baby shower, gender reveal game, interactive baby shower activity" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://baby-name-reveal.yyzz.dev/" />
+  <meta name="theme-color" content="#e3f2fd" />
   <link rel="preload" href="style.css" as="style">
   <link rel="preload" href="script.js" as="script">
 
@@ -63,7 +64,7 @@ limitations under the License.
 
 <body>
   <div class="backdrop" id="backdrop" onclick="toggleConfig()"></div>
-  <div class="container">
+  <main class="container">
     <div id="config-menu" class="config-menu">
       <h3>Configuration</h3>
       <div class="config-grid">
@@ -132,7 +133,7 @@ limitations under the License.
       <button onclick="toggleConfig()" title="Settings" aria-label="Settings">⚙️</button>
       <button onclick="toggleFullScreen()" title="Full Screen" aria-label="Full Screen">🖥️</button>
     </div>
-  </div>
+  </main>
 
   <script src="script.js" defer></script>
 </body>
