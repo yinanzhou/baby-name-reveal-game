@@ -261,29 +261,37 @@ function captureSnapshot() {
   snapshotsContainer.appendChild(snapshotBoard);
 }
 
-// Helper: Focus a tile and move cursor to the end
-function focusTileAndMoveCursorToEnd(tile) {
+// Helper: Focus a tile and select its content
+function focusAndSelectTile(tile) {
   tile.focus();
   let range = document.createRange();
   let sel = window.getSelection();
   range.selectNodeContents(tile);
-  range.collapse(false);
   sel.removeAllRanges();
   sel.addRange(range);
 }
 
-function onTileInput(tile) {
+function onTileInput(tile, e) {
   // Keep only the last character and uppercase it
   let text = tile.innerText.trim();
   if (text.length > 0) {
-    tile.innerText = text[text.length - 1].toUpperCase();
+    let charToKeep = "";
+    if (e && e.data) {
+      charToKeep = e.data[e.data.length - 1];
+    } else {
+      charToKeep = text[text.length - 1];
+    }
+    tile.innerText = charToKeep.toUpperCase();
 
-    // Move focus to next tile if available
+    // Move focus to next non-green tile if available
     let next = tile.nextElementSibling;
+    while (next && next.classList.contains("tile") && next.classList.contains("correct")) {
+      next = next.nextElementSibling;
+    }
     if (next && next.classList.contains("tile")) {
       // We need to wait a bit for the cursor to be set
       setTimeout(() => {
-        focusTileAndMoveCursorToEnd(next);
+        focusAndSelectTile(next);
       }, 10);
     }
   }
@@ -297,7 +305,7 @@ function addLetter() {
   newTile.className = "tile";
   newTile.contentEditable = "true";
 
-  newTile.addEventListener("input", () => onTileInput(newTile));
+  newTile.addEventListener("input", (e) => onTileInput(newTile, e));
   newTile.addEventListener("click", () => onTileClick(newTile));
 
   // Set index for the tile
@@ -369,7 +377,7 @@ document.addEventListener("keydown", function (e) {
     if (activeElem && activeElem.classList.contains("tile") && activeElem.innerText === "") {
       let prev = activeElem.previousElementSibling;
       if (prev && prev.classList.contains("tile")) {
-        focusTileAndMoveCursorToEnd(prev);
+        focusAndSelectTile(prev);
       }
     }
   } else if (e.key === "Enter") {
