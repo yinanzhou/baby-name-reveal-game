@@ -25,6 +25,8 @@ limitations under the License.
   <meta name="keywords" content="baby shower game, baby name reveal, name guessing game, Wordle baby shower, gender reveal game, interactive baby shower activity" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://baby-name-reveal.yyzz.dev/" />
+  <link rel="preload" href="style.css" as="style">
+  <link rel="preload" href="script.js" as="script">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
@@ -106,7 +108,11 @@ limitations under the License.
     <h2 id="gender-hint">👶 Guess the Name! 👶</h2>
 
     <div class="game-board" id="board">
-      <!-- Letter spots will be generated here -->
+      <div class="tile" contenteditable="true" data-index="1"></div>
+      <div class="tile" contenteditable="true" data-index="2"></div>
+      <div class="tile" contenteditable="true" data-index="3"></div>
+      <div class="tile" contenteditable="true" data-index="4"></div>
+      <div class="tile" contenteditable="true" data-index="5"></div>
       <div class="suffix" id="suffix-le">Smith</div>
     </div>
 

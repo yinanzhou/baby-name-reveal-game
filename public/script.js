@@ -394,15 +394,7 @@ document.addEventListener("keydown", function (e) {
 // Initialize Game
 function init() {
   applyConfig();
-
-  const board = document.getElementById("board");
-  const tiles = board.querySelectorAll(".tile");
-
-  if (tiles.length === 0 && config.mode === "manual") {
-    for (let i = 0; i < config.initialTiles; i++) {
-      addLetter();
-    }
-  }
+  resetBoard();
 }
 
 // Run initialization
