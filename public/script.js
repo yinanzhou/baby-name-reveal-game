@@ -391,8 +391,37 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+function setupEventListeners() {
+  // Config Inputs
+  document.getElementById("cfg-title").addEventListener("input", applyConfig);
+  document.getElementById("cfg-theme-style").addEventListener("change", applyConfig);
+  document.getElementById("cfg-suffix").addEventListener("input", applyConfig);
+  document.getElementById("cfg-mode").addEventListener("change", applyConfig);
+  document.getElementById("cfg-answer").addEventListener("input", applyConfig);
+  document.getElementById("cfg-initial-tiles").addEventListener("input", applyConfig);
+  document.getElementById("cfg-max-snapshots").addEventListener("input", applyConfig);
+
+  // Buttons
+  document.getElementById("toggle-config-btn").addEventListener("click", applyAndClose);
+  document.getElementById("backdrop").addEventListener("click", toggleConfig);
+
+  // Palette
+  document.getElementById("btn-palette-white").addEventListener("click", () => setTool("white"));
+  document.getElementById("btn-palette-green").addEventListener("click", () => setTool("green"));
+  document.getElementById("btn-palette-yellow").addEventListener("click", () => setTool("yellow"));
+
+  // Controls
+  document.getElementById("btn-add-letter").addEventListener("click", addLetter);
+  document.getElementById("btn-remove-letter").addEventListener("click", removeLetter);
+  document.getElementById("btn-snapshot").addEventListener("click", captureSnapshot);
+  document.getElementById("btn-reset").addEventListener("click", resetBoard);
+  document.getElementById("btn-settings").addEventListener("click", toggleConfig);
+  document.getElementById("btn-fullscreen").addEventListener("click", toggleFullScreen);
+}
+
 // Initialize Game
 function init() {
+  setupEventListeners();
   applyConfig();
   resetBoard();
 }

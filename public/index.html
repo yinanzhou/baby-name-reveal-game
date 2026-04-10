@@ -63,34 +63,29 @@ limitations under the License.
 </head>
 
 <body>
-  <div class="backdrop" id="backdrop" onclick="toggleConfig()"></div>
+  <div class="backdrop" id="backdrop"></div>
   <main class="container">
     <div id="config-menu" class="config-menu">
       <h3>Configuration</h3>
       <div class="config-grid">
-        <label>Event Title: <input type="text" id="cfg-title" value="John &amp; Ana's Baby Shower"
-            oninput="applyConfig()"></label>
+        <label>Event Title: <input type="text" id="cfg-title" value="John &amp; Ana's Baby Shower"></label>
         <label>Theme &amp; Style:
-          <select id="cfg-theme-style" onchange="applyConfig()">
+          <select id="cfg-theme-style">
             <option value="boy">Boy (Blue + Emoji)</option>
             <option value="girl">Girl (Pink + Emoji)</option>
             <option value="neutral">Neutral (Green, No Emoji)</option>
           </select>
         </label>
-        <label>Suffix (Optional Last Name): <input type="text" id="cfg-suffix" value="Smith"
-            oninput="applyConfig()"></label>
+        <label>Suffix (Optional Last Name): <input type="text" id="cfg-suffix" value="Smith"></label>
         <label>Mode:
-          <select id="cfg-mode" onchange="applyConfig()">
+          <select id="cfg-mode">
             <option value="auto" selected>Pre-programmed answer</option>
             <option value="manual">Manual labeling</option>
           </select>
         </label>
-        <label id="cfg-answer-label">Answer: <input type="text" id="cfg-answer" value="BABY"
-            oninput="applyConfig()"></label>
-        <label id="cfg-initial-tiles-label">Starting Tiles: <input type="number" id="cfg-initial-tiles" value="5"
-            min="1" oninput="applyConfig()"></label>
-        <label>Max Snapshots: <input type="number" id="cfg-max-snapshots" value="1" min="1"
-            oninput="applyConfig()"></label>
+        <label id="cfg-answer-label">Answer: <input type="text" id="cfg-answer" value="BABY"></label>
+        <label id="cfg-initial-tiles-label">Starting Tiles: <input type="number" id="cfg-initial-tiles" value="5" min="1"></label>
+        <label>Max Snapshots: <input type="number" id="cfg-max-snapshots" value="1" min="1"></label>
       </div>
       <div class="instructions">
         <h4>Instructions</h4>
@@ -101,7 +96,7 @@ limitations under the License.
         <p><strong>Privacy:</strong> This app runs entirely in your browser. It does not collect, store, or transmit any personal data.</p>
       </div>
       <p><a href="https://github.com/yinanzhou/baby-name-reveal-game" target="_blank" rel="noopener noreferrer">View Source on GitHub</a></p>
-      <button onclick="applyAndClose()" id="toggle-config-btn" class="btn-square" title="Apply changes and close"
+      <button id="toggle-config-btn" class="btn-square" title="Apply changes and close"
         aria-label="Apply and Close">Apply</button>
     </div>
 
@@ -120,18 +115,18 @@ limitations under the License.
     <div id="snapshots" class="snapshots-container"></div>
 
     <div class="palette">
-      <div class="palette-btn palette-white active" onclick="setTool('white')" title="Clear Color"></div>
-      <div class="palette-btn palette-green" onclick="setTool('green')" title="Mark Correct (Green)"></div>
-      <div class="palette-btn palette-yellow" onclick="setTool('yellow')" title="Mark Present (Yellow)"></div>
+      <div id="btn-palette-white" class="palette-btn palette-white active" title="Clear Color"></div>
+      <div id="btn-palette-green" class="palette-btn palette-green" title="Mark Correct (Green)"></div>
+      <div id="btn-palette-yellow" class="palette-btn palette-yellow" title="Mark Present (Yellow)"></div>
     </div>
 
     <div class="controls">
-      <button onclick="addLetter()" title="Add Letter Spot" aria-label="Add Letter Spot">➕</button>
-      <button onclick="removeLetter()" title="Remove Letter Spot" aria-label="Remove Letter Spot">➖</button>
-      <button onclick="captureSnapshot()" title="Take Snapshot" aria-label="Take Snapshot">📸</button>
-      <button onclick="resetBoard()" title="Reset Board" aria-label="Reset Board">🔄</button>
-      <button onclick="toggleConfig()" title="Settings" aria-label="Settings">⚙️</button>
-      <button onclick="toggleFullScreen()" title="Full Screen" aria-label="Full Screen">🖥️</button>
+      <button id="btn-add-letter" title="Add Letter Spot" aria-label="Add Letter Spot">➕</button>
+      <button id="btn-remove-letter" title="Remove Letter Spot" aria-label="Remove Letter Spot">➖</button>
+      <button id="btn-snapshot" title="Take Snapshot" aria-label="Take Snapshot">📸</button>
+      <button id="btn-reset" title="Reset Board" aria-label="Reset Board">🔄</button>
+      <button id="btn-settings" title="Settings" aria-label="Settings">⚙️</button>
+      <button id="btn-fullscreen" title="Full Screen" aria-label="Full Screen">🖥️</button>
     </div>
   </main>
 
