@@ -26,11 +26,11 @@ Program](https://bughunters.google.com/open-source-security).
 
 ## Technical Architecture
 
-This project is a single-file application designed for zero-dependency deployment and ease of use.
+This project is designed for zero-dependency deployment and ease of use.
 
-*   **Monolithic Structure**: All HTML, CSS, and JavaScript are contained within `index.html`.
-*   **State Management**: Game state and configuration are managed in-memory via a simple JavaScript object.
-*   **Styling**: Uses CSS variables for theming and responsive design.
+*   **File Structure**: HTML, CSS, and JavaScript are separated into `index.html`, `style.css`, and `script.js` for better maintainability and security.
+*   **State Management**: Game state and configuration are managed in-memory via a simple JavaScript object in `script.js`.
+*   **Styling**: Uses CSS variables in `style.css` for theming and responsive design.
 
 ## Prerequisites
 
@@ -70,7 +70,7 @@ Open your browser and navigate to the address provided by the server (usually `h
 
 ### Code Configuration
 
-You can pre-configure the game by editing the `config` object in the `<script>` tag of `index.html`:
+You can pre-configure the game by editing the `config` object at the top of `script.js`:
 
 ```javascript
 let config = {
