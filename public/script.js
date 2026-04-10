@@ -164,7 +164,7 @@ function updateCongratsDisplay() {
   });
 
   if (allCorrect) {
-    snapshotsContainer.innerHTML = "";
+    snapshotsContainer.replaceChildren();
     const congrats = document.createElement("div");
     congrats.style.fontSize = "5rem";
     congrats.innerText = "🎉🥳👏";
