@@ -28,8 +28,8 @@ limitations under the License.
   --btn-text: #0d47a1;
   --btn-hover: #90caf9;
 
-  --tile-size: 160px;
-  --font-size-huge: 8rem;
+  --tile-size: clamp(60px, 12.5vw, 160px);
+  --font-size-huge: calc(var(--tile-size) * 0.8);
 }
 
 body {
@@ -121,8 +121,8 @@ h2 {
   font-size: var(--font-size-huge);
   font-weight: bold;
   color: var(--suffix-color);
-  margin-left: 60px;
-  /* Increased spacing */
+  margin-left: calc(var(--tile-size) * 0.375);
+  /* Spacing relative to tile size */
   display: flex;
   align-items: center;
   height: var(--tile-size);
@@ -262,12 +262,12 @@ button:hover {
 .tile::after {
   content: attr(data-index);
   position: absolute;
-  bottom: -50px;
-  /* Moved further down */
+  bottom: calc(var(--tile-size) * -0.3);
+  /* Position relative to tile size */
   left: 50%;
   transform: translateX(-50%);
-  font-size: 2rem;
-  /* Bigger index */
+  font-size: calc(var(--tile-size) * 0.2);
+  /* Font size relative to tile size */
   font-weight: bold;
   color: #616161;
   /* Dark gray */
@@ -298,10 +298,13 @@ button:hover {
   width: 90%;
   max-height: 90vh;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   display: block;
   /* Shown by default */
   text-align: left;
 }
+
+
 
 .backdrop {
   position: fixed;
