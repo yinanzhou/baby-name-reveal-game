@@ -4,6 +4,8 @@
 
 With the Baby Name Reveal Game, you can host an interactive name-guessing game at your baby shower. It helps you reveal your baby's name in a fun, Wordle-like style!
 
+<img src="./assets/screenshot.png" alt="Baby Name Reveal Game Screenshot" width="600">
+
 ## Disclaimer
 
 This is not an officially supported Google product. This project is not
