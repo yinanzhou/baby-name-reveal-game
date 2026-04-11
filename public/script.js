@@ -62,10 +62,19 @@ function applyConfig() {
 
   // Theme classes
   document.body.classList.remove("theme-girl", "theme-neutral");
+  let themeColor = "#e3f2fd"; // Default boy theme
   if (config.theme === "girl") {
     document.body.classList.add("theme-girl");
+    themeColor = "#fce4ec";
   } else if (config.theme === "neutral") {
     document.body.classList.add("theme-neutral");
+    themeColor = "#e8f5e9";
+  }
+
+  // Update Safari/Chrome theme color
+  const metaThemeColor = document.getElementById("meta-theme-color");
+  if (metaThemeColor) {
+    metaThemeColor.setAttribute("content", themeColor);
   }
 
   // Mode specific UI
